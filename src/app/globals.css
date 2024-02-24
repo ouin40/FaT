@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 195, 124, 132;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
@@ -11,12 +11,13 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 195, 124, 132;
+    --background-end-rgb: 195, 124, 132;
   }
 }
 
 body {
+  cursor: url("/cursor/paw1.cur"), auto; /*custom cursor*/
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,6 +25,70 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+button:hover,
+a:hover {
+  cursor: url("/cursor/paw2.cur"), pointer; /*custom pointer cursor*/
+}
+
+.paw-image1 {
+  width: 250px;
+  animation: floating1 2.5s ease-in-out infinite;
+}
+
+.paw-image2 {
+  width: 250px;
+  animation: floating2 3s ease-in-out infinite;
+}
+
+/* keyframes animation */
+@keyframes floating1 {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes floating2 {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* media query */
+@media (max-width: 768px) {
+  .paw-image1,
+  .paw-image2 {
+    width: 150px;
+    margin: auto;
+  }
+
+  .bg-white {
+    gap: 0 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .paw-image1,
+  .paw-image2 {
+    width: 75px;
+  }
+
+  .bg-white {
+    gap: 0 1rem;
+  }
 }
 
 @layer utilities {
